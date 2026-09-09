@@ -16,12 +16,13 @@ template by HTML5 UP (CCA 3.0). Hosted on GitHub Pages.
 | --- | --- |
 | Home + News snapshot + upcoming events | `index.html` |
 | Full news archive | `news.html` |
-| Research + publications | `research.html` |
+| Research, publications, posters & talks (`#talks` anchor) | `research.html` |
 | Outreach & community | `community.html` |
-| Conferences & travel | `calendar.html` |
-| Press, talks & posters | `media.html` |
+| Conferences & travel (timeline) | `calendar.html` |
+| Press & blog coverage | `media.html` |
 | Learning resources | `resources.html` |
 | Privacy & cookies | `privacy.html` |
+| Custom 404 (root-relative paths) | `404.html` |
 
 Shared markup (`<head>`, nav, footer, the Google Tag Manager snippet) is **duplicated in
 every page** — there is no templating, so a change to the nav or head must be made in each
@@ -35,8 +36,9 @@ and mirror it into the right year group in `news.html`.
 
 ### Adding a calendar entry
 
-Copy the commented template row in the relevant `<tbody>` of `calendar.html` (and, for
-upcoming events, `index.html`).
+Copy a `<li data-kind="...">` item in the relevant `<ol class="timeline">` of
+`calendar.html` (and, for upcoming events, `index.html`). `data-kind` is one of
+`talk | poster | conference | school | workshop | panel | visit` and sets the colour.
 
 ### After adding a page
 
