@@ -10,9 +10,11 @@
 		var btn = document.createElement('button');
 		btn.id = 'backtotop';
 		btn.type = 'button';
-		btn.className = 'icon solid fa-arrow-up';
 		btn.setAttribute('aria-label', 'Back to top');
-		btn.innerHTML = '<span class="label">Back to top</span>';
+		btn.innerHTML =
+			'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" ' +
+			'fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' +
+			'<path d="M12 19V6M5 13l7-7 7 7"/></svg>';
 		document.body.appendChild(btn);
 
 		var shown = false;

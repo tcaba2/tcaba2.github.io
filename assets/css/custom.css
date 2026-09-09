@@ -150,6 +150,8 @@
 	transform: translateY(0.75rem);
 	transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
 	z-index: 10000;
+	-webkit-appearance: none;
+	appearance: none;
 }
 
 #backtotop.is-visible {
@@ -163,14 +165,10 @@
 	color: #1e252d !important;
 }
 
-#backtotop::before {
-	font-size: 1rem;
-	line-height: 1;
+#backtotop svg {
 	display: block;
-}
-
-#backtotop .label {
-	display: none;
+	width: 18px;
+	height: 18px;
 }
 
 @media screen and (max-width: 480px) {
