@@ -130,6 +130,9 @@
  * ------------------------------------------------------------------------- */
 
 #backtotop {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: fixed;
 	right: 1.5rem;
 	bottom: 1.5rem;
@@ -162,7 +165,8 @@
 
 #backtotop::before {
 	font-size: 1rem;
-	line-height: 3rem;
+	line-height: 1;
+	display: block;
 }
 
 #backtotop .label {
@@ -175,9 +179,6 @@
 		bottom: 1rem;
 		width: 2.75rem;
 		height: 2.75rem;
-	}
-	#backtotop::before {
-		line-height: 2.75rem;
 	}
 }
 
