@@ -39,6 +39,8 @@
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-P42C9G82');</script>
 		<!-- End Google Tag Manager -->
+
+		<script src="assets/js/backtotop.js" defer></script>
 	</head>
 
 	<body class="is-preload">
@@ -70,7 +72,6 @@
 							<li><a href="mailto:tcaba60@uasd.edu.do" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
 							<li><a href="https://github.com/tcaba2" target="_blank" rel="noopener noreferrer" class="icon brands fa-github" aria-label="GitHub"><span class="label">GitHub</span></a></li>
 							<li><a href="https://www.linkedin.com/in/thara-caba/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin-in" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://bsky.app/profile/thara2.bsky.social" target="_blank" rel="noopener noreferrer" class="icon solid fa-cloud" aria-label="Bluesky"><span class="label">Bluesky</span></a></li>
 							<li><a href="https://inspirehep.net/authors/3157113" target="_blank" rel="noopener noreferrer" class="icon solid fa-atom" aria-label="INSPIRE-HEP profile"><span class="label">INSPIRE-HEP</span></a></li>
 							<li><a href="https://orcid.org/0000-0003-3993-169X" target="_blank" rel="noopener noreferrer" class="icon brands fa-orcid" aria-label="ORCID profile"><span class="label">ORCID</span></a></li>
 						</ul>
@@ -87,78 +88,68 @@
 								</header>
 
 								<h2>Upcoming</h2>
-								<div class="table-wrapper">
-									<table>
-										<thead>
-											<tr>
-												<th>Event</th>
-												<th>Location</th>
-												<th>Date</th>
-												<th>Role</th>
-											</tr>
-										</thead>
-										<tbody>
-											<!-- Template row — copy, fill in, keep sorted by date:
-											<tr><td>Event name</td><td>City, Country</td><td>Mon YYYY</td><td>Talk</td></tr>
-											-->
-											<tr>
-												<td colspan="4">Nothing scheduled publicly right now — check back soon.</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+								<!-- When something is scheduled, replace the block below with a <ol class="timeline">
+								     like "Past". Each item:
+								     <li data-kind="talk">   kind = talk | poster | conference | school | workshop | panel | visit
+								       <span class="tl-date">Mon YYYY</span>
+								       <div class="tl-card">
+								         <span class="tl-tag">Talk</span>
+								         <h3 class="tl-title">Event name</h3>
+								         <p class="tl-meta">City, Country</p>
+								       </div>
+								     </li>
+								-->
+								<p class="timeline-empty">Nothing scheduled publicly right now &mdash; check back soon.</p>
 
 								<h2>Past</h2>
-								<div class="table-wrapper">
-									<table>
-										<thead>
-											<tr>
-												<th>Event</th>
-												<th>Location</th>
-												<th>Date</th>
-												<th>Role</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>15th Serbian Conference on Spectral Line Shapes in Astrophysics (SCSLSA)</td>
-												<td>Serbia</td>
-												<td>2025</td>
-												<td>Poster</td>
-											</tr>
-											<tr>
-												<td>6th Shaw-IAU Workshop on Astronomy for Education</td>
-												<td>Online</td>
-												<td>2024</td>
-												<td>Talk</td>
-											</tr>
-											<tr>
-												<td><a href="https://aas.org/meetings/aas243" target="_blank" rel="noopener noreferrer">243rd American Astronomical Society Meeting</a></td>
-												<td>New Orleans, USA</td>
-												<td>Jan 2024</td>
-												<td>Panel</td>
-											</tr>
-											<tr>
-												<td><a href="https://indico.ictp.it/event/10190" target="_blank" rel="noopener noreferrer">Giambiagi Winter School on Cosmology</a></td>
-												<td>Buenos Aires, Argentina</td>
-												<td>2023</td>
-												<td>Poster</td>
-											</tr>
-											<tr>
-												<td><a href="https://plancks23.ai-sf.it" target="_blank" rel="noopener noreferrer">PLANCKS</a></td>
-												<td>Italy</td>
-												<td>2023</td>
-												<td>Poster</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<p>A fuller list of posters and talks is on the <a href="media.html">Media</a> page.</p>
+								<ol class="timeline">
+									<li data-kind="poster">
+										<span class="tl-date">2025</span>
+										<div class="tl-card">
+											<span class="tl-tag">Poster</span>
+											<h3 class="tl-title">15th Serbian Conference on Spectral Line Shapes in Astrophysics</h3>
+											<p class="tl-meta">Serbia</p>
+										</div>
+									</li>
+									<li data-kind="talk">
+										<span class="tl-date">2024</span>
+										<div class="tl-card">
+											<span class="tl-tag">Talk</span>
+											<h3 class="tl-title">6th Shaw-IAU Workshop on Astronomy for Education</h3>
+											<p class="tl-meta">Online</p>
+										</div>
+									</li>
+									<li data-kind="panel">
+										<span class="tl-date">Jan 2024</span>
+										<div class="tl-card">
+											<span class="tl-tag">Panel</span>
+											<h3 class="tl-title"><a href="https://aas.org/meetings/aas243" target="_blank" rel="noopener noreferrer">243rd American Astronomical Society Meeting</a></h3>
+											<p class="tl-meta">New Orleans, USA</p>
+										</div>
+									</li>
+									<li data-kind="school">
+										<span class="tl-date">2023</span>
+										<div class="tl-card">
+											<span class="tl-tag">School</span>
+											<h3 class="tl-title"><a href="https://indico.ictp.it/event/10190" target="_blank" rel="noopener noreferrer">Giambiagi Winter School on Cosmology</a></h3>
+											<p class="tl-meta">Buenos Aires, Argentina &middot; poster</p>
+										</div>
+									</li>
+									<li data-kind="poster">
+										<span class="tl-date">2023</span>
+										<div class="tl-card">
+											<span class="tl-tag">Poster</span>
+											<h3 class="tl-title"><a href="https://plancks23.ai-sf.it" target="_blank" rel="noopener noreferrer">PLANCKS</a></h3>
+											<p class="tl-meta">Italy</p>
+										</div>
+									</li>
+								</ol>
+								<p>The full list of posters and talks is on the <a href="research.html#talks">Research</a> page.</p>
 
 							</section>
 
 						<ul class="actions special">
-							<li><a href="index.html" class="button">&larr; Back home</a></li>
+							<li><a href="images/TharaCabaCV.pdf" target="_blank" rel="noopener noreferrer" class="button large">CV</a></li>
 						</ul>
 
 						</div>

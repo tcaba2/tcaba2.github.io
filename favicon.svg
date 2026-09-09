@@ -1,5 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Thara Caba">
-	<rect width="64" height="64" rx="12" fill="#1e252d"/>
-	<text x="50%" y="50%" dy="0.02em" text-anchor="middle" dominant-baseline="central"
-		font-family="'Source Sans Pro', Helvetica, Arial, sans-serif" font-weight="700" font-size="30" fill="#18bfef">TC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Telescope">
+	<rect width="64" height="64" rx="13" fill="#1e252d"/>
+	<g stroke="#18bfef" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+		<!-- tube -->
+		<line x1="17" y1="45" x2="40" y2="20"/>
+		<!-- eyepiece stub -->
+		<line x1="14.5" y1="43" x2="11" y2="47"/>
+		<!-- mount strut + pedestal -->
+		<line x1="27" y1="37" x2="32" y2="45"/>
+		<line x1="32" y1="44" x2="32" y2="49"/>
+		<!-- tripod -->
+		<line x1="32" y1="49" x2="24" y2="57"/>
+		<line x1="32" y1="49" x2="40" y2="57"/>
+	</g>
+	<!-- objective lens flare -->
+	<path d="M35.5 15.5 L48 21 L42.5 27 Z" fill="#7ad8f5"/>
+	<circle cx="46.5" cy="13.5" r="2.4" fill="#ffffff"/>
+	<circle cx="38.5" cy="9" r="1.5" fill="#ffffff"/>
 </svg>
