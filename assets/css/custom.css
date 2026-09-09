@@ -1,0 +1,339 @@
+/*
+ * Custom styles for tcaba2.github.io
+ * Loaded after assets/css/main.css so these rules win without editing the
+ * vendored HTML5 UP "Massively" template.
+ */
+
+/* ---------------------------------------------------------------------------
+ * 1. Social icon hover / focus tooltips (desktop nav)
+ * ------------------------------------------------------------------------- */
+
+/* Massively sets #nav { overflow: hidden }; allow the tooltip to spill out. */
+#nav {
+	overflow: visible;
+}
+
+#nav ul.icons {
+	position: relative;
+}
+
+#nav ul.icons li {
+	position: relative;
+}
+
+/* The template hides .label with display:none; render it as a tooltip instead. */
+#nav ul.icons a .label {
+	display: block;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-0.35rem);
+	background: #1e252d;
+	color: #ffffff;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	font-size: 0.55rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	line-height: 1;
+	white-space: nowrap;
+	padding: 0.4rem 0.55rem;
+	border-radius: 4px;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.15s ease, visibility 0.15s ease;
+	z-index: 20;
+}
+
+#nav ul.icons a:hover .label,
+#nav ul.icons a:focus-visible .label {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Small caret on the tooltip, pointing down at the icon. */
+#nav ul.icons a .label::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 4px solid transparent;
+	border-top-color: #1e252d;
+}
+
+/* ---------------------------------------------------------------------------
+ * 2. Nav link spacing — keep 7 items on one row a little longer
+ * ------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1280px) {
+	#nav ul.links li a {
+		padding: 0 1.15rem;
+		font-size: 0.75rem;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * 3. Homepage "News" list
+ * ------------------------------------------------------------------------- */
+
+.news-list {
+	list-style: none;
+	padding-left: 0;
+	margin: 0 0 1.5rem 0;
+}
+
+.news-list li {
+	position: relative;
+	padding: 0 0 1.25rem 1.75rem;
+	margin: 0 0 1.25rem 0;
+	border-bottom: solid 1px rgba(210, 215, 217, 0.75);
+}
+
+.news-list li:last-child {
+	border-bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.news-list li::before {
+	content: '\2605'; /* ★ */
+	position: absolute;
+	left: 0;
+	top: 0.1em;
+	color: #18bfef;
+	font-size: 0.9rem;
+}
+
+.news-list .news-date {
+	display: block;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 0.6rem;
+	color: #717981;
+	margin-bottom: 0.35rem;
+}
+
+.news-more {
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 0.7rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * 4. Back-to-top button
+ * ------------------------------------------------------------------------- */
+
+#backtotop {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	width: 3rem;
+	height: 3rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: #1e252d;
+	color: #ffffff !important;
+	box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(0.75rem);
+	transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+	z-index: 10000;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+#backtotop.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+#backtotop:hover {
+	background-color: #18bfef;
+	color: #1e252d !important;
+}
+
+#backtotop svg {
+	display: block;
+	width: 18px;
+	height: 18px;
+}
+
+@media screen and (max-width: 480px) {
+	#backtotop {
+		right: 1rem;
+		bottom: 1rem;
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * 5. Calendar timeline
+ * ------------------------------------------------------------------------- */
+
+.timeline {
+	list-style: none;
+	margin: 0 0 3rem 0;
+	padding: 0 0 0 8.5rem;
+	position: relative;
+}
+
+.timeline::before {
+	content: '';
+	position: absolute;
+	left: 7.35rem;
+	top: 0.5rem;
+	bottom: 0.5rem;
+	width: 2px;
+	background: rgba(210, 215, 217, 0.9);
+}
+
+.timeline > li {
+	position: relative;
+	margin: 0 0 1.5rem 0;
+	padding: 0;
+}
+
+.timeline > li:last-child {
+	margin-bottom: 0;
+}
+
+/* date sitting to the left of the rail */
+.timeline .tl-date {
+	position: absolute;
+	left: -8.5rem;
+	top: 1.15rem;
+	width: 6.4rem;
+	text-align: right;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-size: 0.62rem;
+	color: #717981;
+	line-height: 1.35;
+}
+
+/* node on the rail */
+.timeline > li::before {
+	content: '';
+	position: absolute;
+	left: -1.22rem;
+	top: 1.3rem;
+	width: 0.7rem;
+	height: 0.7rem;
+	border-radius: 50%;
+	background: #18bfef;
+	box-shadow: 0 0 0 4px #ffffff;
+}
+
+.timeline .tl-card {
+	background: #ffffff;
+	border: solid 1px rgba(210, 215, 217, 0.9);
+	border-left: solid 4px #18bfef;
+	border-radius: 6px;
+	padding: 1rem 1.25rem;
+	box-shadow: 0 1px 4px rgba(30, 37, 45, 0.05);
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.timeline .tl-card:hover {
+	box-shadow: 0 0.5rem 1.5rem rgba(30, 37, 45, 0.12);
+	transform: translateY(-2px);
+}
+
+.timeline .tl-tag {
+	display: inline-block;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-size: 0.55rem;
+	line-height: 1;
+	padding: 0.35em 0.6em;
+	border-radius: 999px;
+	background: rgba(24, 191, 239, 0.14);
+	color: #0f7fa0;
+	margin-bottom: 0.5rem;
+}
+
+.timeline .tl-title {
+	font-size: 1rem;
+	line-height: 1.35;
+	margin: 0 0 0.2rem 0;
+}
+
+.timeline .tl-title a {
+	border-bottom: 0;
+}
+
+.timeline .tl-meta {
+	font-size: 0.8rem;
+	color: #717981;
+	margin: 0;
+}
+
+/* kind colours */
+.timeline > li[data-kind="poster"]::before { background: #a978e6; }
+.timeline > li[data-kind="poster"] .tl-card { border-left-color: #a978e6; }
+.timeline > li[data-kind="poster"] .tl-tag { background: rgba(169, 120, 230, 0.16); color: #7b3fce; }
+
+.timeline > li[data-kind="conference"]::before,
+.timeline > li[data-kind="school"]::before,
+.timeline > li[data-kind="workshop"]::before { background: #e0912f; }
+.timeline > li[data-kind="conference"] .tl-card,
+.timeline > li[data-kind="school"] .tl-card,
+.timeline > li[data-kind="workshop"] .tl-card { border-left-color: #e0912f; }
+.timeline > li[data-kind="conference"] .tl-tag,
+.timeline > li[data-kind="school"] .tl-tag,
+.timeline > li[data-kind="workshop"] .tl-tag { background: rgba(224, 145, 47, 0.16); color: #b56a12; }
+
+.timeline > li[data-kind="panel"]::before { background: #2fb98a; }
+.timeline > li[data-kind="panel"] .tl-card { border-left-color: #2fb98a; }
+.timeline > li[data-kind="panel"] .tl-tag { background: rgba(47, 185, 138, 0.16); color: #1c8763; }
+
+.timeline > li[data-kind="visit"]::before { background: #8a94a6; }
+.timeline > li[data-kind="visit"] .tl-card { border-left-color: #8a94a6; }
+.timeline > li[data-kind="visit"] .tl-tag { background: rgba(138, 148, 166, 0.18); color: #5b6472; }
+
+.timeline-empty {
+	background: rgba(210, 215, 217, 0.18);
+	border: dashed 1px rgba(210, 215, 217, 0.9);
+	border-radius: 6px;
+	padding: 1rem 1.25rem;
+	color: #717981;
+	font-size: 0.9rem;
+}
+
+@media screen and (max-width: 736px) {
+	.timeline {
+		padding-left: 1.5rem;
+	}
+	.timeline::before {
+		left: 0.35rem;
+	}
+	.timeline .tl-date {
+		position: static;
+		width: auto;
+		text-align: left;
+		display: block;
+		margin-bottom: 0.4rem;
+	}
+	.timeline > li::before {
+		left: -1.3rem;
+		top: 0.3rem;
+	}
+}
