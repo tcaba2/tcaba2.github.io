@@ -1,0 +1,37 @@
+{%- comment -%}
+  Renders events from _data/events.yml as a timeline.
+  include.when:  "upcoming" (soonest first) or "past" (most recent first)
+  include.limit: optional maximum number of events
+{%- endcomment -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
+{%- assign sorted = site.data.events | sort: 'start' -%}
+{%- if include.when == 'past' %}{% assign sorted = sorted | reverse %}{% endif -%}
+{%- assign limit = include.limit | default: 1000 -%}
+{%- assign shown = 0 -%}
+{%- capture items -%}
+{%- for ev in sorted -%}
+{%- if include.when == 'past' -%}
+{%- if ev.end >= today %}{% continue %}{% endif -%}
+{%- else -%}
+{%- if ev.end < today %}{% continue %}{% endif -%}
+{%- endif -%}
+{%- if shown >= limit %}{% break %}{% endif -%}
+{%- assign shown = shown | plus: 1 %}
+									<li data-kind="{{ ev.kind }}">
+										<span class="tl-date">{{ ev.dates }}</span>
+										<div class="tl-card">
+											<span class="tl-tag">{{ ev.tag | default: ev.kind | capitalize }}</span>
+											<h3 class="tl-title">{{ ev.title }}</h3>
+											<p class="tl-meta">{{ ev.place }}</p>
+										</div>
+									</li>
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 %}
+								<ol class="timeline">{{ items }}
+								</ol>
+{%- elsif include.when == 'past' %}
+								<p class="timeline-empty">No past events listed yet.</p>
+{%- else %}
+								<p class="timeline-empty">Nothing scheduled publicly right now &mdash; check back soon.</p>
+{%- endif %}

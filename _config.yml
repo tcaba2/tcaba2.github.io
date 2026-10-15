@@ -1,0 +1,18 @@
+# Site settings. GitHub Pages builds this site with Jekyll on every push.
+title: Thara Caba
+author: Thara Caba
+url: https://tcaba2.github.io
+
+# Shared social-preview image (og:image / twitter:image).
+image: /images/headshot.jpg
+
+# Google Tag Manager container (loads GA4 and the consentmanager.net banner).
+gtm_id: GTM-P42C9G82
+
+exclude:
+  - README.md
+  - LICENSE.txt
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .claude

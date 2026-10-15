@@ -1,0 +1,10 @@
+# News items, NEWEST FIRST. The home page shows the first 4; news.html shows
+# all of them, grouped by `year`.
+#
+#   year: section heading on news.html
+#   date: label shown above the item (e.g. "September 2026" or just "2026")
+#   text: the item; HTML is allowed (links, <em>, ...)
+
+- year: 2026
+  date: September 2026
+  text: Presented my work on EarthCARE at the Physical Society of Japan Annual Meeting.

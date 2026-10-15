@@ -1,0 +1,23 @@
+{%- assign root = include.root -%}
+{%- assign current = page.url | remove_first: '/' -%}
+{%- if current == '' %}{% assign current = 'index.html' %}{% endif %}
+				<!-- Header -->
+					<header id="header">
+						<a href="{{ root }}index.html" class="logo">{{ site.author }}</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+{%- for item in site.data.navigation %}
+							<li{% if item.url == current %} class="active"{% endif %}><a href="{{ root }}{{ item.url }}">{{ item.title }}</a></li>
+{%- endfor %}
+						</ul>
+						<ul class="icons">
+							<li><a href="mailto:tcaba60@uasd.edu.do" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
+							<li><a href="https://github.com/tcaba2" target="_blank" rel="noopener noreferrer" class="icon brands fa-github" aria-label="GitHub"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/thara-caba/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin-in" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://inspirehep.net/authors/3157113" target="_blank" rel="noopener noreferrer" class="icon solid fa-atom" aria-label="INSPIRE-HEP profile"><span class="label">INSPIRE-HEP</span></a></li>
+							<li><a href="https://orcid.org/0000-0003-3993-169X" target="_blank" rel="noopener noreferrer" class="icon brands fa-orcid" aria-label="ORCID profile"><span class="label">ORCID</span></a></li>
+						</ul>
+					</nav>

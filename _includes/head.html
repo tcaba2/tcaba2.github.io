@@ -1,0 +1,57 @@
+{%- assign root = include.root -%}
+{%- assign page_url = site.url | append: page.url -%}
+{%- assign og_title = page.og_title | default: page.title -%}
+{%- assign og_description = page.og_description | default: page.description -%}
+{%- assign og_image = page.image | default: site.image | prepend: site.url -%}
+{%- unless page.canonical == false %}
+		<link rel="canonical" href="{{ page_url }}">
+{%- endunless %}
+		<title>{{ page.title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+{% if page.description %}
+		<meta name="description" content="{{ page.description }}" />
+		<meta name="author" content="{{ site.author }}" />
+{%- endif %}
+{%- if page.robots %}
+		<meta name="robots" content="{{ page.robots }}" />
+{%- endif %}
+{% if page.og_type %}
+		<meta property="og:type" content="{{ page.og_type }}" />
+		<meta property="og:url" content="{{ page_url }}" />
+		<meta property="og:title" content="{{ og_title }}" />
+		<meta property="og:description" content="{{ og_description }}" />
+		<meta property="og:image" content="{{ og_image }}" />
+{%- if page.og_type == 'profile' %}
+		<meta property="profile:first_name" content="Thara" />
+		<meta property="profile:last_name" content="Caba" />
+{%- endif %}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="{{ og_title }}" />
+		<meta name="twitter:description" content="{{ og_description }}" />
+		<meta name="twitter:image" content="{{ og_image }}" />
+{% endif %}
+{%- if page.google_site_verification %}
+		<meta name="google-site-verification" content="I4NCrrVA4WjnJLW_LPAN32ePr1XwhBKXAHih8XmsnOg" />
+{% endif %}
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ root }}favicon-32.png?v=4" />
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ root }}favicon-16.png?v=4" />
+		<link rel="icon" type="image/svg+xml" href="{{ root }}favicon.svg?v=4" />
+		<link rel="shortcut icon" href="{{ root }}favicon.ico?v=4" />
+		<link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png?v=4" />
+{% if page.person_jsonld %}
+{% include person-jsonld.html %}
+{% endif %}
+		<link rel="stylesheet" href="{{ root }}assets/css/main.css" />
+		<link rel="stylesheet" href="{{ root }}assets/css/custom.css" />
+		<noscript><link rel="stylesheet" href="{{ root }}assets/css/noscript.css" /></noscript>
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+		<!-- End Google Tag Manager -->
+
+		<script src="{{ root }}assets/js/backtotop.js" defer></script>

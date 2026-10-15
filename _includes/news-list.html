@@ -1,0 +1,15 @@
+{%- comment -%}
+  Renders news items from _data/news.yml.
+  include.items: the items to show (defaults to all)
+  include.limit: optional maximum number of items
+{%- endcomment -%}
+{%- assign items = include.items | default: site.data.news -%}
+{%- assign limit = include.limit | default: 1000 %}
+								<ul class="news-list">
+{%- for item in items limit: limit %}
+									<li>
+										<span class="news-date">{{ item.date }}</span>
+										{{ item.text }}
+									</li>
+{%- endfor %}
+								</ul>

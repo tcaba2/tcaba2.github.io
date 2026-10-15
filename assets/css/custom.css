@@ -113,7 +113,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 	font-size: 0.6rem;
-	color: #717981;
+	color: #646c74;
 	margin-bottom: 0.35rem;
 }
 
@@ -223,7 +223,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.12em;
 	font-size: 0.62rem;
-	color: #717981;
+	color: #646c74;
 	line-height: 1.35;
 }
 
@@ -266,7 +266,7 @@
 	padding: 0.35em 0.6em;
 	border-radius: 999px;
 	background: rgba(24, 191, 239, 0.14);
-	color: #0f7fa0;
+	color: #0b6a86;
 	margin-bottom: 0.5rem;
 }
 
@@ -282,7 +282,7 @@
 
 .timeline .tl-meta {
 	font-size: 0.8rem;
-	color: #717981;
+	color: #646c74;
 	margin: 0;
 }
 
@@ -299,11 +299,11 @@
 .timeline > li[data-kind="workshop"] .tl-card { border-left-color: #e0912f; }
 .timeline > li[data-kind="conference"] .tl-tag,
 .timeline > li[data-kind="school"] .tl-tag,
-.timeline > li[data-kind="workshop"] .tl-tag { background: rgba(224, 145, 47, 0.16); color: #b56a12; }
+.timeline > li[data-kind="workshop"] .tl-tag { background: rgba(224, 145, 47, 0.16); color: #8f520b; }
 
 .timeline > li[data-kind="panel"]::before { background: #2fb98a; }
 .timeline > li[data-kind="panel"] .tl-card { border-left-color: #2fb98a; }
-.timeline > li[data-kind="panel"] .tl-tag { background: rgba(47, 185, 138, 0.16); color: #1c8763; }
+.timeline > li[data-kind="panel"] .tl-tag { background: rgba(47, 185, 138, 0.16); color: #146b4b; }
 
 .timeline > li[data-kind="visit"]::before { background: #8a94a6; }
 .timeline > li[data-kind="visit"] .tl-card { border-left-color: #8a94a6; }
@@ -314,7 +314,7 @@
 	border: dashed 1px rgba(210, 215, 217, 0.9);
 	border-radius: 6px;
 	padding: 1rem 1.25rem;
-	color: #717981;
+	color: #646c74;
 	font-size: 0.9rem;
 }
 
@@ -336,4 +336,19 @@
 		left: -1.3rem;
 		top: 0.3rem;
 	}
+}
+
+/* Let width/height attributes reserve space without distorting images */
+.image img {
+	height: auto;
+}
+
+/* Home page headshot */
+.image.fit.headshot {
+	width: 350px;
+	max-width: 100%;
+	height: auto;
+	aspect-ratio: 350 / 450;
+	object-fit: cover;
+	margin: auto;
 }

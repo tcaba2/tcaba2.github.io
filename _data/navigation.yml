@@ -1,0 +1,15 @@
+# Main menu, in display order. `url` is the page file name.
+- title: About me
+  url: index.html
+- title: News
+  url: news.html
+- title: Research
+  url: research.html
+- title: Community
+  url: community.html
+- title: Calendar
+  url: calendar.html
+- title: Media
+  url: media.html
+- title: Resources
+  url: resources.html
