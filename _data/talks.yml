@@ -1,0 +1,41 @@
+# Selected posters & talks on research.html, NEWEST FIRST.
+#
+#   type:  label in the first column, e.g. "Talk", "Poster", "Poster, awarded"
+#   title: title & venue; HTML is allowed (links, ...)
+#   year:  year
+
+- type: Talk
+  title: Observation of EarthCARE Laser Emissions with the Pierre Auger Observatory, International school of Cosmic Ray Astrophysics, Italy.
+  year: 2026
+
+- type: Poster, awarded
+  title: Observations of EarthCARE laser emissions with the Pierre Auger Observatory, 13th KSETA Plenary Workshop, Germany.
+  year: 2026
+
+- type: Talk
+  title: Constraining the High Energy Emission from NGC 1068, VII CI-SoDoFi, Dominican Republic.
+  year: 2026
+
+- type: Poster
+  title: "Comparison of SDSS and Gaia QSO data: Searching for anomalies in QSO spectra, 15th SCSLSA, Serbia."
+  year: 2025
+
+- type: Workshop
+  title: Use of Programming for Teaching Astronomy, Astronomy Workshop for Teachers at the Dominican Republic, Online.
+  year: 2024
+
+- type: Talk
+  title: Month of Astronomy in the Dominican Republic, 6th Shaw-IAU Workshop on Astronomy for Education, Online.
+  year: 2024
+
+- type: Panel
+  title: Astronomy for a better world, <a href="https://aas.org/meetings/aas243" target="_blank" rel="noopener noreferrer">American Astronomical Society Winter Meeting</a>, United States.
+  year: 2024
+
+- type: Poster
+  title: The Multi-messenger Astrophysics Approach and the MAGIC Telescopes, <a href="https://indico.ictp.it/event/10190" target="_blank" rel="noopener noreferrer">Giambiagi Winter School on Cosmology</a>, Argentina.
+  year: 2023
+
+- type: Poster
+  title: Study of spiral galaxies and their environment, <a href="https://plancks23.ai-sf.it" target="_blank" rel="noopener noreferrer">PLANCKS</a>, Italy.
+  year: 2023

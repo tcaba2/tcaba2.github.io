@@ -9,6 +9,11 @@ image: /images/headshot.jpg
 # Google Tag Manager container (loads GA4 and the consentmanager.net banner).
 gtm_id: GTM-P42C9G82
 
+# jekyll-sitemap writes /sitemap.xml on every build (pages with
+# `sitemap: false` in their front matter are left out).
+plugins:
+  - jekyll-sitemap
+
 exclude:
   - README.md
   - LICENSE.txt

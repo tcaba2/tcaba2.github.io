@@ -7,9 +7,14 @@
 {%- assign limit = include.limit | default: 1000 %}
 								<ul class="news-list">
 {%- for item in items limit: limit %}
-									<li>
-										<span class="news-date">{{ item.date }}</span>
-										{{ item.text }}
+									<li{% if item.image %} class="has-image"{% endif %}>
+{%- if item.image %}
+										<img class="news-image" src="{{ page.root }}{{ item.image }}" alt="{{ item.alt }}" loading="lazy" decoding="async" />
+{%- endif %}
+										<div class="news-body">
+											<span class="news-date">{{ item.date }}</span>
+											{{ item.text }}
+										</div>
 									</li>
 {%- endfor %}
 								</ul>

@@ -4,6 +4,8 @@
 #   year: section heading on news.html
 #   date: label shown above the item (e.g. "September 2026" or just "2026")
 #   text: the item; HTML is allowed (links, <em>, ...)
+#   image: optional picture shown next to the item, e.g. images/news/jps2026.jpg
+#   alt:   description of the picture (required when `image` is set)
 
 - year: 2026
   date: September 2026

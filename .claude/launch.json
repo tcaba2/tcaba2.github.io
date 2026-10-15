@@ -3,8 +3,12 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "bundle",
-      "runtimeArgs": ["exec", "jekyll", "serve", "--port", "8765"],
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": [
+        "LANG=en_US.UTF-8",
+        "LC_ALL=en_US.UTF-8",
+        "/opt/homebrew/bin/bundle", "exec", "jekyll", "serve", "--port", "8765", "--livereload"
+      ],
       "port": 8765
     }
   ]

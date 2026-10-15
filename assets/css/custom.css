@@ -117,6 +117,41 @@
 	margin-bottom: 0.35rem;
 }
 
+/* optional picture beside a news item */
+.news-list li.has-image {
+	display: flex;
+	gap: 1.25rem;
+	align-items: flex-start;
+}
+
+.news-list li.has-image .news-image {
+	order: 2;
+	flex: 0 0 9rem;
+	width: 9rem;
+	height: 6.5rem;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+.news-list li.has-image .news-body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+@media screen and (max-width: 480px) {
+	.news-list li.has-image {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.news-list li.has-image .news-image {
+		order: 0;
+		flex-basis: auto;
+		width: 100%;
+		height: auto;
+		max-height: 14rem;
+	}
+}
+
 .news-more {
 	font-family: 'Source Sans Pro', Helvetica, sans-serif;
 	font-weight: 600;
@@ -309,6 +344,10 @@
 .timeline > li[data-kind="visit"] .tl-card { border-left-color: #8a94a6; }
 .timeline > li[data-kind="visit"] .tl-tag { background: rgba(138, 148, 166, 0.18); color: #5b6472; }
 
+.timeline > li[data-kind="meeting"]::before { background: #e0607a; }
+.timeline > li[data-kind="meeting"] .tl-card { border-left-color: #e0607a; }
+.timeline > li[data-kind="meeting"] .tl-tag { background: rgba(224, 96, 122, 0.16); color: #a3283f; }
+
 .timeline-empty {
 	background: rgba(210, 215, 217, 0.18);
 	border: dashed 1px rgba(210, 215, 217, 0.9);
@@ -351,4 +390,9 @@
 	aspect-ratio: 350 / 450;
 	object-fit: cover;
 	margin: auto;
+}
+
+/* Research page: start the talks table below the floated PhD figure */
+#talks {
+	clear: both;
 }

@@ -1,9 +1,9 @@
 # Conferences, schools, talks and research visits, in any order.
 # Each event is listed under "Upcoming" until its `end` date has passed, then
-# under "Past". The split happens when GitHub Pages rebuilds the site (on every
-# push), so an event moves to "Past" at the first push after it ends.
+# under "Past". The split happens when GitHub Pages rebuilds the site: on every
+# push, and daily via .github/workflows/rebuild.yml.
 #
-#   kind:  talk | poster | conference | school | workshop | panel | visit
+#   kind:  talk | poster | conference | school | workshop | panel | visit | meeting
 #          (sets the colour; also the tag text unless `tag` is given)
 #   tag:   optional tag text, e.g. "Poster, awarded"
 #   start: first day, "YYYY-MM-DD" (quoted), used for sorting
@@ -12,6 +12,13 @@
 #   title: event name
 #   place: City, Country
 
+- kind: meeting
+  start: "2026-11-25"
+  end: "2026-11-25"
+  dates: "25 Nov 2026"
+  title: 2nd EarthCARE Research Meeting
+  place: Berlin, Germany
+
 - kind: visit
   start: "2026-09-18"
   end: "2026-11-10"
@@ -19,7 +26,7 @@
   title: Research stay at Osaka Metropolitan University
   place: Osaka, Japan
 
-- kind: conference
+- kind: meeting
   start: "2026-11-12"
   end: "2026-11-20"
   dates: "12 Nov&ndash;20 Nov 2026"
