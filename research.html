@@ -37,7 +37,7 @@ cv_button: true
 {%- for talk in site.data.talks %}
 											<tr>
 												<td><strong>{{ talk.type }}</strong></td>
-												<td>{{ talk.title }}</td>
+												<td>{{ talk.title }}{% if talk.link %} <a class="talk-link" href="{{ talk.link }}" target="_blank" rel="noopener noreferrer">{{ talk.link_label | default: 'PDF' }}</a>{% endif %}</td>
 												<td>{{ talk.year }}</td>
 											</tr>
 {%- endfor %}

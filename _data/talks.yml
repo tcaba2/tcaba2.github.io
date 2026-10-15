@@ -3,6 +3,8 @@
 #   type:  label in the first column, e.g. "Talk", "Poster", "Poster, awarded"
 #   title: title & venue; HTML is allowed (links, ...)
 #   year:  year
+#   link:  optional slides/poster file or page, e.g. files/kseta2026-poster.pdf
+#   link_label: optional link text (default "PDF"), e.g. "Slides" or "Poster"
 
 - type: Talk
   title: Observation of EarthCARE Laser Emissions with the Pierre Auger Observatory, International school of Cosmic Ray Astrophysics, Italy.

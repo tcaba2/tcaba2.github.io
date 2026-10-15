@@ -1,13 +1,17 @@
 # Site settings. GitHub Pages builds this site with Jekyll on every push.
 title: Thara Caba
 author: Thara Caba
+email: tcaba60@uasd.edu.do
 url: https://tcaba2.github.io
 
-# Shared social-preview image (og:image / twitter:image).
-image: /images/headshot.jpg
+# Shared social-preview image (og:image / twitter:image), 1200x630.
+image: /images/social-card.jpg
 
 # Google Tag Manager container (loads GA4 and the consentmanager.net banner).
 gtm_id: GTM-P42C9G82
+
+# Don't add GitHub Pages' default "Primer" theme (unused; the site has its own CSS).
+theme: null
 
 # jekyll-sitemap writes /sitemap.xml on every build (pages with
 # `sitemap: false` in their front matter are left out).
