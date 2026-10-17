@@ -2,6 +2,7 @@
 layout: null
 title: "Particle Notebook: a companion to Griffiths"
 description: "An interactive guide to the Standard Model, read chapter by chapter alongside Introduction to Elementary Particles by David Griffiths."
+og_description: "An interactive guide to the Standard Model, to read alongside Griffiths' Introduction to Elementary Particles."
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,15 @@ description: "An interactive guide to the Standard Model, read chapter by chapte
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 <meta name="description" content="{{ page.description }}">
 <meta name="author" content="{{ site.author }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.og_description }}">
+<meta property="og:image" content="{{ site.url }}{{ site.image }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.og_description }}">
+<meta name="twitter:image" content="{{ site.url }}{{ site.image }}">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=4">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
