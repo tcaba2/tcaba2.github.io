@@ -1,0 +1,848 @@
+---
+layout: null
+title: "Particle Notebook: a companion to Griffiths"
+description: "An interactive guide to the Standard Model, read chapter by chapter alongside Introduction to Elementary Particles by David Griffiths."
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Particle Notebook: a companion to Griffiths</title>
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta name="description" content="{{ page.description }}">
+<meta name="author" content="{{ site.author }}">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=4">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+<link rel="shortcut icon" href="/favicon.ico?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+<!-- End Google Tag Manager -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f4; --paper:#ffffff; --ink:#16202c; --muted:#5b6776; --line:#cfd6de;
+  --quark:#6b3fc4; --lepton:#16805a; --gauge:#c7362f; --scalar:#a67800; --hadron:#2a64a8;
+  --serif:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --tile:clamp(52px, 10.5vw, 92px);
+  --bar-h:170px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171f; --paper:#19212c; --ink:#e7ecf2; --muted:#96a3b3; --line:#2d3848;
+    --quark:#a98af0; --lepton:#4cc79a; --gauge:#f0766d; --scalar:#e3b83c; --hadron:#72a6ea;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171f; --paper:#19212c; --ink:#e7ecf2; --muted:#96a3b3; --line:#2d3848;
+  --quark:#a98af0; --lepton:#4cc79a; --gauge:#f0766d; --scalar:#e3b83c; --hadron:#72a6ea;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding-bottom:calc(var(--bar-h) + 16px)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+header{max-width:1320px;margin:0 auto;padding:28px 20px 8px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0;letter-spacing:-0.01em}
+.sub{font-family:var(--serif);font-size:18px;color:var(--muted);margin:6px 0 0;max-width:60ch}
+.sub cite{font-style:italic}
+.back{display:inline-block;margin:0 0 10px;font-size:13px;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--ink);text-decoration:underline}
+
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:7px}
+.sw{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--c);background:color-mix(in srgb,var(--c) 14%,var(--paper))}
+.sw.pred{border-style:dashed;background:transparent;--c:var(--muted)}
+.sw.fut{--c:var(--line);background:var(--bg)}
+.sw.ear{--c:var(--muted);background:linear-gradient(135deg,transparent 55%,var(--muted) 55%)}
+
+.layout{max-width:1320px;margin:0 auto;padding:8px 20px 20px;display:grid;gap:28px}
+@media (min-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 380px;align-items:start}}
+
+h2{font-family:var(--serif);font-weight:500;font-size:22px;margin:22px 0 10px}
+h2 small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400;margin-left:8px}
+
+.sm-wrap{overflow-x:auto}
+.sm{display:grid;gap:5px;grid-template-columns:1.5rem repeat(3,var(--tile)) 10px repeat(2,var(--tile));grid-auto-rows:auto;width:max-content}
+.famh{font-family:var(--serif);font-size:15px;text-align:center;border-bottom:1px solid var(--line);padding-bottom:3px;margin-bottom:2px;line-height:1.2}
+.famh small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--muted)}
+.colh{font-size:12px;color:var(--muted);text-align:center;align-self:end;padding-bottom:2px;line-height:1.2}
+.rowh{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;color:var(--muted);text-align:center;border-left:1px solid var(--line);padding-left:4px;margin-right:2px}
+
+.row{display:flex;flex-wrap:wrap;gap:5px}
+.group-label{font-size:13px;color:var(--muted);margin:10px 0 6px}
+
+/* Tiles */
+.cat-quark{--c:var(--quark)} .cat-lepton{--c:var(--lepton)} .cat-gauge{--c:var(--gauge)} .cat-scalar{--c:var(--scalar)} .cat-hadron{--c:var(--hadron)}
+.tile{
+  position:relative;width:var(--tile);height:calc(var(--tile)*1.24);overflow:hidden;
+  font-size:calc(var(--tile) / 8.6);
+  border:1.5px solid var(--c);border-radius:6px;
+  background:color-mix(in srgb,var(--c) 11%,var(--paper));
+  padding:.45em .5em;text-align:left;cursor:pointer;
+  display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto 1fr auto;
+  grid-template-areas:"mass mass" "q yr" "s yr" "sym sym" "name name";column-gap:.3em;
+  transition:opacity .35s, filter .35s, background-color .35s;
+}
+.tile:hover{background:color-mix(in srgb,var(--c) 20%,var(--paper))}
+.t-m,.t-q,.t-s{line-height:1.25;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-m{grid-area:mass}.t-q{grid-area:q}.t-s{grid-area:s}
+.t-sym{grid-area:sym;font-family:var(--serif);font-size:3em;line-height:1;color:var(--c);align-self:center;justify-self:center;white-space:nowrap}
+.t-sym sub,.t-sym sup{font-size:.45em;line-height:0}
+.t-name{grid-area:name;font-size:.95em;line-height:1.2;justify-self:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.t-yr{grid-area:yr;align-self:start;justify-self:end;font-size:.95em;line-height:1.25;color:var(--c);font-weight:600;font-variant-numeric:tabular-nums}
+/* antiparticle corner: filled = observed, dashed = predicted */
+.t-anti{position:absolute;right:0;bottom:0;width:0;height:0;border-style:solid;border-width:0 0 calc(var(--tile)*.2) calc(var(--tile)*.2);border-color:transparent transparent var(--c) transparent;display:none}
+.t-anti.known{display:block}
+.t-anti.predicted{display:block;border-color:transparent transparent color-mix(in srgb,var(--c) 30%,transparent) transparent}
+.bar-over{text-decoration:overline}
+
+.tile.is-predicted{border-style:dashed;background:transparent;opacity:.8}
+.tile.is-predicted .t-yr{font-weight:400;font-style:italic}
+.tile.is-future{filter:grayscale(1);opacity:.28;background:var(--bg);border-color:var(--line)}
+.tile.is-future .t-sym{color:var(--muted)}
+.tile.selected{outline:2.5px solid var(--ink);outline-offset:2px}
+.tile.flash{animation:flash .9s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 70%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+
+/* Detail panel */
+.panel{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 22px 24px}
+@media (min-width:1100px){.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - var(--bar-h) - 40px);overflow:auto}}
+@media (max-width:1099px){
+  .panel{position:fixed;left:8px;right:8px;bottom:calc(var(--bar-h) + 8px);max-height:62vh;overflow:auto;z-index:20;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);transform:translateY(calc(100% + var(--bar-h) + 20px));transition:transform .3s ease;visibility:hidden}
+  .panel.open{transform:none;visibility:visible}
+}
+.close{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:2px 10px;cursor:pointer}
+@media (min-width:1100px){.close{display:none}}
+.p-empty{color:var(--muted);font-family:var(--serif);font-size:17px}
+.p-head{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.p-sym{font-family:var(--serif);font-size:56px;line-height:1;color:var(--c);min-width:1.2em}
+.p-sym sub,.p-sym sup{font-size:.45em}
+.p-name{font-family:var(--serif);font-size:26px;line-height:1.1;margin:0}
+.p-cat{color:var(--muted);font-size:13px}
+.p-status{margin:12px 0 14px;padding:8px 12px;border-radius:6px;background:color-mix(in srgb,var(--c) 10%,var(--bg));font-size:14px}
+.p-status.future{background:var(--bg);color:var(--muted)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:0 0 16px;font-size:14px}
+dt{color:var(--muted)}
+dd{margin:0;font-variant-numeric:tabular-nums}
+.p-sec{margin:16px 0 0}
+.p-sec h3{font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 4px}
+.p-sec p{margin:0;font-family:var(--serif);font-size:16px;line-height:1.55}
+.p-sec p + p{margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;background:var(--bg)}
+.qn{border-collapse:collapse;font-size:14px;width:100%}
+.qn th{text-align:left;font-weight:400;color:var(--muted);padding:2px 12px 2px 0;white-space:nowrap}
+.qn td{padding:2px 0;font-variant-numeric:tabular-nums}
+.qn td.sym{font-family:var(--serif);font-style:italic;padding-right:12px;white-space:nowrap;color:var(--muted)}
+.qn td.zero{color:var(--muted)}
+/* panel antiparticle block */
+.p-anti{display:flex;gap:12px;align-items:baseline;margin-top:4px}
+.p-anti .as{font-family:var(--serif);font-size:30px;line-height:1;color:var(--c);min-width:1.2em}
+.p-anti .as sub,.p-anti .as sup{font-size:.45em}
+.p-anti .st{font-size:13px;color:var(--muted)}
+
+/* Timeline bar */
+.timebar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 20px calc(12px + env(safe-area-inset-bottom,0px))}
+.tb-inner{max-width:1320px;margin:0 auto}
+.tb-top{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.play{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;cursor:pointer;display:grid;place-items:center}
+.play svg{width:16px;height:16px;fill:var(--ink)}
+.year{font-family:var(--serif);font-size:44px;line-height:1;font-variant-numeric:tabular-nums;min-width:3.1ch;letter-spacing:-0.02em}
+.era-now{min-width:0}
+.era-names{font-family:var(--serif);font-size:18px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.era-names .ref{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-left:6px}
+.era-desc{margin:2px 0 0;font-size:13.5px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:95ch}
+.count{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+.track{position:relative;margin-top:10px}
+.tb-toggle{align-self:start;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 12px;font-size:12.5px;cursor:pointer;color:var(--muted)}
+.tb-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.show-tl{position:fixed;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 4px 14px rgba(0,0,0,.18);color:var(--ink)}
+.show-tl[hidden],.timebar[hidden]{display:none}
+.lanes{position:relative}
+.era{position:absolute;height:15px;border:none;background:none;padding:0;cursor:pointer;display:flex;align-items:center;font-size:10.5px;line-height:15px;color:var(--muted);white-space:nowrap}
+.era .band{position:absolute;left:0;top:0;height:15px;border-radius:3px;background:color-mix(in srgb,var(--ink) 11%,transparent)}
+.era .lbl{position:relative;padding:0 5px}
+.era.outside .lbl{padding:0}
+.era:hover .band{background:color-mix(in srgb,var(--ink) 20%,transparent)}
+.era.active .band{background:var(--ink)}
+.era.active .lbl{color:var(--paper)}
+.era.active.outside .lbl{color:var(--ink);font-weight:600}
+input[type=range]{width:100%;margin:6px 0 0;accent-color:var(--ink);height:22px;cursor:pointer}
+.ticks{position:relative;height:9px;margin:0 8px}
+.tick{position:absolute;top:0;width:2px;height:7px;border-radius:1px;background:var(--c);transform:translateX(-1px);opacity:.25}
+.tick.on{opacity:1}
+.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 2px;font-variant-numeric:tabular-nums}
+
+@media (max-width:640px){
+  .year{font-size:34px}
+  .era-desc{-webkit-line-clamp:1}
+  .era .lbl{display:none}
+  header{padding-top:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tile,.panel{transition:none}
+  .tile.flash{animation:none}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+  <a class="back" href="/resources.html">&larr; Resources</a>
+  <h1>Particle Notebook</h1>
+  <p class="sub">An interactive guide to the Standard Model, read chapter by chapter alongside <cite>Introduction to Elementary Particles</cite> by David Griffiths. Drag the timeline to watch the particle picture fill in.</p>
+  <ul class="legend" aria-label="Legend">
+    <li><span class="sw" style="--c:var(--quark)"></span>Quarks</li>
+    <li><span class="sw" style="--c:var(--lepton)"></span>Leptons</li>
+    <li><span class="sw" style="--c:var(--gauge)"></span>Gauge bosons</li>
+    <li><span class="sw" style="--c:var(--scalar)"></span>Scalar boson</li>
+    <li><span class="sw" style="--c:var(--hadron)"></span>Hadrons</li>
+    <li><span class="sw ear"></span>Corner: antiparticle observed</li>
+    <li><span class="sw pred"></span>Predicted, not yet observed</li>
+    <li><span class="sw fut"></span>Unknown in this year</li>
+  </ul>
+</header>
+
+<main class="layout">
+  <div class="tables">
+    <h2>Elementary particles <small>The Standard Model</small></h2>
+    <div class="sm-wrap"><div class="sm" id="sm">
+      <div class="famh" style="grid-row:1;grid-column:2 / span 3">Fermions<small>spin ½, obey Pauli exclusion</small></div>
+      <div class="famh" style="grid-row:1;grid-column:6 / span 2">Bosons<small>integer spin</small></div>
+      <div class="colh" style="grid-row:2;grid-column:2">Generation I</div>
+      <div class="colh" style="grid-row:2;grid-column:3">II</div>
+      <div class="colh" style="grid-row:2;grid-column:4">III</div>
+      <div class="colh" style="grid-row:2;grid-column:6">Force carriers</div>
+      <div class="colh" style="grid-row:2;grid-column:7">Scalar</div>
+      <div class="rowh" style="grid-row:3 / span 2;grid-column:1">Quarks</div>
+      <div class="rowh" style="grid-row:5 / span 2;grid-column:1">Leptons</div>
+    </div></div>
+
+    <h2>Hadrons <small>Bound states of quarks</small></h2>
+    <div class="group-label">Mesons: quark and antiquark (some important ones)</div>
+    <div class="row" id="mesons"></div>
+    <div class="group-label">Baryons: three quarks (some important ones)</div>
+    <div class="row" id="baryons"></div>
+  </div>
+
+  <aside class="panel" id="panel" aria-live="polite">
+    <button class="close" id="close" aria-label="Close details">Close</button>
+    <div id="panel-body"><p class="p-empty">Select a particle to see its properties, how it was found, and where it appears in Griffiths.</p></div>
+  </aside>
+</main>
+
+<button class="tb-toggle show-tl" id="show-tl" hidden>Show timeline</button>
+<div class="timebar" id="timebar">
+  <div class="tb-inner">
+    <div class="tb-top">
+      <button class="play" id="play" aria-label="Play timeline"></button>
+      <div class="year" id="year" aria-live="polite">1897</div>
+      <div class="era-now">
+        <div class="era-names" id="era-names"></div>
+        <p class="era-desc" id="era-desc"></p>
+        <div class="count" id="count"></div>
+      </div>
+      <button class="tb-toggle" id="hide-tl">Hide timeline</button>
+    </div>
+    <div class="track">
+      <div class="lanes" id="lanes"></div>
+      <input type="range" id="slider" min="1895" max="2012" step="1" value="1897" aria-label="Year">
+      <div class="ticks" id="ticks"></div>
+      <div class="scale"><span>1895</span><span>1934</span><span>1973</span><span>2012</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   DATA. Edit freely: this is the notebook.
+   found: first observation. pred: first theoretical prediction.
+   refs: where to read about it in Griffiths (2nd ed.).
+   ========================================================= */
+const B = s => `<span class="bar-over">${s}</span>`;
+
+const PARTICLES = [
+  // ---------- Quarks ----------
+  {id:'u', sym:'u', name:'up', cat:'quark', sec:'sm', r:2, c:2, mass:'2.2 MeV', q:'+2/3', s:'1/2',
+   life:'Stable (confined in hadrons)', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1964, by:'Murray Gell-Mann; George Zweig'},
+   found:{y:1968, by:'SLAC-MIT collaboration', how:'Deep inelastic electron-proton scattering revealed point-like constituents inside the proton. Why do the hadrons fit into the Eightfold Way?'},
+   refs:['§1.8','Ch 4','Ch 8'],
+   note:'Lightest quark. The proton is uud and the neutron udd, so up and down quarks make up essentially all ordinary matter. The quoted mass is the "current" mass; most of the proton\'s mass comes from QCD binding energy, not from the quarks themselves.'},
+  {id:'d', sym:'d', name:'down', cat:'quark', sec:'sm', r:3, c:2, mass:'4.7 MeV', q:'-1/3', s:'1/2',
+   life:'Stable (confined in hadrons)', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1964, by:'Murray Gell-Mann; George Zweig'},
+   found:{y:1968, by:'SLAC-MIT collaboration', how:'Deep inelastic scattering on protons and neutrons. Why do the hadrons fit into the Eightfold Way?'},
+   refs:['§1.8','Ch 4','Ch 8'],
+   note:'Isospin partner of the up quark. Because u and d have nearly equal (and small) masses, isospin is an excellent approximate symmetry: p and n, or π⁺, π⁰, π⁻, behave almost identically under the strong force.'},
+  {id:'s', sym:'s', name:'strange', cat:'quark', sec:'sm', r:3, c:3, mass:'95 MeV', q:'-1/3', s:'1/2',
+   life:'Stable (confined in hadrons)', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1964, by:'Murray Gell-Mann; George Zweig'},
+   found:{y:1968, by:'Inferred with u and d from deep inelastic scattering', how:'Strange hadrons had been known since 1947; the quark itself was accepted along with the quark model. Why do the hadrons fit into the Eightfold Way?'},
+   refs:['§1.6','§1.8','Ch 4'],
+   note:'Carrier of strangeness, the quantum number introduced in the 1950s to explain why strange particles are produced quickly (strong force) but decay slowly (weak force). Strangeness is conserved by the strong and electromagnetic forces but not by the weak.'},
+  {id:'c', sym:'c', name:'charm', cat:'quark', sec:'sm', r:2, c:3, mass:'1.27 GeV', q:'+2/3', s:'1/2',
+   life:'Stable (confined in hadrons)', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1964, by:'James Bjorken & Sheldon Glashow; motivated further by the GIM mechanism (1970)'},
+   found:{y:1974, by:'Samuel Ting (BNL) and Burton Richter (SLAC)', how:'Discovery of the J/ψ, a cc̄ bound state. Should we have the same number of leptons and quarks?'},
+   refs:['§1.9','Ch 5','Ch 9'],
+   note:'The GIM mechanism needed a fourth quark to cancel strangeness-changing neutral currents that were not seen experimentally. The J/ψ in November 1974 convinced most physicists that quarks are real.'},
+  {id:'t', sym:'t', name:'top', cat:'quark', sec:'sm', r:2, c:4, mass:'172.8 GeV', q:'+2/3', s:'1/2',
+   life:'≈ 5 × 10⁻²⁵ s', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1973, by:'Makoto Kobayashi & Toshihide Maskawa'},
+   found:{y:1995, by:'CDF and DØ at the Fermilab Tevatron', how:'tt̄ pairs as decay products of a highly energetic gluon. Should we have the same number of leptons and quarks?'},
+   refs:['§1.9','Ch 9'],
+   note:'By far the heaviest known elementary particle. It decays before it has time to hadronize, so there are no top mesons or baryons.'},
+  {id:'b', sym:'b', name:'bottom', cat:'quark', sec:'sm', r:3, c:4, mass:'4.18 GeV', q:'-1/3', s:'1/2',
+   life:'Stable (confined in hadrons)', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1973, by:'Makoto Kobayashi & Toshihide Maskawa'},
+   found:{y:1977, by:'E288 at Fermilab (Leon Lederman)', how:'Proton-nucleon collisions produced bottomonium decaying to pairs of muons. Should we have the same number of leptons and quarks?'},
+   refs:['§1.9','Ch 9'],
+   note:'Kobayashi and Maskawa showed that with three generations the quark mixing matrix can contain a complex phase, allowing CP violation. That argument predicted both b and t.'},
+
+  // ---------- Leptons ----------
+  {id:'e', sym:'e', name:'electron', cat:'lepton', sec:'sm', r:4, c:2, mass:'0.511 MeV', q:'-1', s:'1/2',
+   life:'Stable', forces:['Electromagnetic','Weak'],
+   found:{y:1897, by:'J. J. Thomson', how:'Measured the charge-to-mass ratio of cathode rays by deflecting them with electric and magnetic fields. Why can cathode rays be deflected by a magnet?'},
+   refs:['§1.1','Ch 7'],
+   note:'The first elementary particle discovered, and still consistent with being point-like. Its interaction with light is described by quantum electrodynamics, the template for every other gauge theory.'},
+  {id:'mu', sym:'μ', name:'muon', cat:'lepton', sec:'sm', r:4, c:3, mass:'105.7 MeV', q:'-1', s:'1/2',
+   life:'2.2 × 10⁻⁶ s', forces:['Electromagnetic','Weak'],
+   found:{y:1936, by:'Carl Anderson & Seth Neddermeyer', how:'Cosmic-ray cloud-chamber tracks of a particle heavier than the electron but much lighter than the proton. What holds the nucleus together?'},
+   refs:['§1.3','Ch 9'],
+   note:'At first mistaken for Yukawa\'s meson, but it barely interacts with nuclei. Rabi\'s famous reaction: "Who ordered that?" Muons dominate the charged cosmic-ray flux at sea level.'},
+  {id:'tau', sym:'τ', name:'tau', cat:'lepton', sec:'sm', r:4, c:4, mass:'1.777 GeV', q:'-1', s:'1/2',
+   life:'2.9 × 10⁻¹³ s', forces:['Electromagnetic','Weak'],
+   found:{y:1975, by:'Martin Perl and the SLAC-LBL group at SPEAR', how:'Anomalous e⁺e⁻ → e<sup>±</sup>μ<sup>∓</sup> events with missing energy.'},
+   refs:['§1.9'],
+   note:'The first third-generation particle. Unlike e and μ, it is heavy enough to decay into hadrons.'},
+  {id:'ve', sym:'ν<sub>e</sub>', name:'e neutrino', full:'electron neutrino', cat:'lepton', sec:'sm', r:5, c:2, mass:'< 0.8 eV', q:'0', s:'1/2',
+   life:'Stable', forces:['Weak'],
+   pred:{y:1930, by:'Wolfgang Pauli'},
+   found:{y:1956, by:'Clyde Cowan & Frederick Reines', how:'Detected reactor antineutrinos at Savannah River via inverse beta decay, ν̄ + p → n + e⁺. Where the energy goes in beta decays?'},
+   refs:['§1.5','Ch 9','Ch 11'],
+   note:'Pauli\'s "desperate remedy" for the apparently missing energy in β decay. It feels only the weak force (and gravity). Oscillation experiments show neutrinos have small but nonzero masses; the bound quoted is from direct measurement.'},
+  {id:'vmu', sym:'ν<sub>μ</sub>', name:'μ neutrino', full:'muon neutrino', cat:'lepton', sec:'sm', r:5, c:3, mass:'< 0.19 MeV', q:'0', s:'1/2',
+   life:'Stable', forces:['Weak'],
+   found:{y:1962, by:'Leon Lederman, Melvin Schwartz & Jack Steinberger', how:'Neutrinos from pion decay at Brookhaven\'s AGS produced muons but not electrons, so they are distinct from ν<sub>e</sub>.'},
+   refs:['§1.5','Ch 9','Ch 11'],
+   note:'Established that lepton number comes in separate flavours (electron-type and muon-type), each conserved separately.'},
+  {id:'vtau', sym:'ν<sub>τ</sub>', name:'τ neutrino', full:'tau neutrino', cat:'lepton', sec:'sm', r:5, c:4, mass:'< 18 MeV', q:'0', s:'1/2',
+   life:'Stable', forces:['Weak'],
+   pred:{y:1975, by:'Implied by the discovery of the τ'},
+   found:{y:2000, by:'DONUT at Fermilab', how:'Emulsion targets showed τ leptons produced in tau-neutrino interactions.'},
+   refs:['Ch 11'],
+   note:'The last Standard Model fermion to be directly observed.'},
+
+  // ---------- Gauge bosons ----------
+  {id:'g', sym:'g', name:'gluon', cat:'gauge', sec:'sm', r:2, c:6, mass:'0', q:'0', s:'1',
+   life:'Stable (confined)', forces:['Mediates the strong force'],
+   pred:{y:1962, by:'Murray Gell-Mann'},
+   found:{y:1978, by:'TASSO, JADE, MARK-J and PLUTO at PETRA (DESY)', how:'Three-jet events in e⁺e⁻ annihilation, the third jet coming from a radiated gluon. What particle is exchanged between two quarks?'},
+   refs:['Ch 8'],
+   note:'Carries colour charge itself (there are eight gluons), so gluons interact with each other. This self-interaction is behind both asymptotic freedom and confinement.'},
+  {id:'gamma', sym:'γ', name:'photon', cat:'gauge', sec:'sm', r:3, c:6, mass:'0', q:'0', s:'1',
+   life:'Stable', forces:['Mediates electromagnetism'],
+   pred:{y:1905, by:'Albert Einstein (light quanta), building on Planck (1900)'},
+   found:{y:1923, by:'Arthur Compton', how:'X-rays scattered from electrons shifted in wavelength exactly as expected for a particle collision. How do we explain the photoelectric effect?'},
+   refs:['§1.2','Ch 7'],
+   note:'Carrier of the electromagnetic force. It is massless because the U(1) gauge symmetry of electromagnetism remains unbroken.'},
+  {id:'Z', sym:'Z', name:'Z boson', cat:'gauge', sec:'sm', r:4, c:6, mass:'91.19 GeV', q:'0', s:'1',
+   life:'2.6 × 10⁻²⁵ s', forces:['Mediates the weak force (neutral)'],
+   pred:{y:1968, by:'Sheldon Glashow, Steven Weinberg & Abdus Salam'},
+   found:{y:1983, by:'UA1 and UA2 at CERN\'s SppS', how:'e⁺e⁻ and μ⁺μ⁻ pairs with invariant mass near 91 GeV.'},
+   refs:['§1.10','Ch 9','Ch 10'],
+   note:'Its indirect effect, weak neutral currents, was seen at Gargamelle (CERN) in 1973. The Z width measured at LEP fixes the number of light neutrino species at three.'},
+  {id:'W', sym:'W', name:'W boson', cat:'gauge', sec:'sm', r:5, c:6, mass:'80.37 GeV', q:'±1', s:'1',
+   life:'3 × 10⁻²⁵ s', forces:['Mediates the weak force (charged)','Electromagnetic'],
+   pred:{y:1968, by:'Sheldon Glashow, Steven Weinberg & Abdus Salam'},
+   found:{y:1983, by:'UA1 and UA2 at CERN\'s SppS', how:'High-transverse-momentum electrons with missing energy in proton-antiproton collisions.'},
+   refs:['§1.10','Ch 9','Ch 10'],
+   note:'Responsible for β decay and for every change of quark or lepton flavour. Its large mass is why the weak force is so short-ranged and so feeble at low energies.'},
+
+  // ---------- Scalar ----------
+  {id:'H', sym:'H', name:'Higgs', cat:'scalar', sec:'sm', r:2, c:7, mass:'125.1 GeV', q:'0', s:'0',
+   life:'1.6 × 10⁻²² s', forces:['Couples to mass (W, Z, fermions)'],
+   pred:{y:1964, by:'Englert & Brout; Higgs; Guralnik, Hagen & Kibble'},
+   found:{y:2012, by:'ATLAS and CMS at the LHC', how:'Excesses in the H → γγ and H → ZZ* → 4ℓ channels.'},
+   refs:['Ch 10'],
+   note:'The leftover excitation of the field that breaks electroweak symmetry and gives the W, Z and fermions their masses. Griffiths\' 2nd edition (2008) treats the mechanism before the particle was found.'},
+
+  // ---------- Mesons ----------
+  {id:'pic', sym:'π<sup>±</sup>', name:'pion', full:'charged pion', cat:'hadron', sec:'mesons', mass:'139.6 MeV', q:'±1', s:'0',
+   content:'u'+B('d')+', d'+B('u'), life:'2.6 × 10⁻⁸ s', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1935, by:'Hideki Yukawa'},
+   found:{y:1942, by:'Bibha Chowdhuri and Debendra Mohan Bose', how:'Photographic emulsions exposed to cosmic rays at mountain altitude showed π → μ decay chains. What holds the nucleus together?'},
+   refs:['§1.3','Ch 4','Ch 9'],
+   note:'Yukawa\'s carrier of the nuclear force, whose mass he estimated from the ~1 fm range of that force. Charged pions decay almost always to μν; the eν mode is suppressed by helicity.'},
+  {id:'pi0', sym:'π<sup>0</sup>', name:'neutral pion', cat:'hadron', sec:'mesons', mass:'135.0 MeV', q:'0', s:'0',
+   content:'(u'+B('u')+' - d'+B('d')+')/√2', life:'8.5 × 10⁻¹⁷ s', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1935, by:'Hideki Yukawa'},
+   found:{y:1950, by:'Bjorklund, Crandall, Moyer & York (Berkeley)', how:'Photon pairs from proton collisions at the Berkeley synchrocyclotron.'},
+   refs:['§1.3','Ch 4'],
+   note:'Decays electromagnetically to two photons, so it lives about a billion times shorter than the charged pion. π⁰ decays feed the electromagnetic component of cosmic-ray air showers.'},
+  {id:'kc', sym:'K<sup>±</sup>', name:'kaon', full:'charged kaon', cat:'hadron', sec:'mesons', mass:'493.7 MeV', q:'±1', s:'0',
+   content:'u'+B('s')+', s'+B('u'), life:'1.2 × 10⁻⁸ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1947, by:'George Rochester & Clifford Butler', how:'Cosmic-ray cloud-chamber photographs of "V" tracks from the decays of unseen particles.'},
+   refs:['§1.6','Ch 4','Ch 9'],
+   note:'One of the first strange particles. The puzzle that the same particle decays to both two and three pions (the τ–θ puzzle) led to the discovery of parity violation in 1956-57.'},
+  {id:'k0', sym:'K<sup>0</sup>', name:'neutral kaon', cat:'hadron', sec:'mesons', mass:'497.6 MeV', q:'0', s:'0',
+   content:'d'+B('s'), life:'K<sub>S</sub> 9.0 × 10⁻¹¹ s; K<sub>L</sub> 5.1 × 10⁻⁸ s', forces:['Strong','Weak'],
+   found:{y:1947, by:'George Rochester & Clifford Butler', how:'The neutral "V" decaying to π⁺π⁻.'},
+   refs:['§1.6','Ch 4'],
+   note:'K⁰ and its antiparticle mix through the weak interaction. The resulting K<sub>S</sub> and K<sub>L</sub> revealed CP violation in 1964.'},
+  {id:'eta', sym:'η', name:'eta', cat:'hadron', sec:'mesons', mass:'547.9 MeV', q:'0', s:'0',
+   content:'mix of u'+B('u')+', d'+B('d')+', s'+B('s'), life:'5 × 10⁻¹⁹ s', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1961, by:'Murray Gell-Mann (Eightfold Way)'},
+   found:{y:1961, by:'Pevsner et al. at the Bevatron', how:'A three-pion resonance in π⁺d collisions.'},
+   refs:['§1.7','Ch 4'],
+   note:'Completed the pseudoscalar meson octet of the Eightfold Way.'},
+  {id:'jpsi', sym:'J/ψ', name:'J/psi', cat:'hadron', sec:'mesons', mass:'3.097 GeV', q:'0', s:'1',
+   content:'c'+B('c'), life:'7.1 × 10⁻²¹ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1974, by:'Samuel Ting (BNL) and Burton Richter (SLAC)', how:'Announced the same day, 11 November 1974: an extremely narrow resonance.'},
+   refs:['§1.9','Ch 5'],
+   note:'Its width is tiny for such a heavy hadron, which signalled a new quark.'},
+  {id:'ups', sym:'ϒ', name:'upsilon', cat:'hadron', sec:'mesons', mass:'9.460 GeV', q:'0', s:'1',
+   content:'b'+B('b'), life:'1.2 × 10⁻²⁰ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1977, by:'E288 at Fermilab (Leon Lederman)', how:'A resonance peak in μ⁺μ⁻ pairs from 400 GeV proton collisions.'},
+   refs:['§1.9','Ch 5'],
+   note:'First evidence of the bottom quark.'},
+
+  // ---------- Baryons ----------
+  {id:'p', sym:'p', name:'proton', cat:'hadron', sec:'baryons', mass:'938.3 MeV', q:'+1', s:'1/2',
+   content:'uud', life:'Stable (> 10<sup>30</sup> yr)', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1919, by:'Ernest Rutherford', how:'Alpha particles knocked hydrogen nuclei out of nitrogen; the name "proton" followed in 1920. Why are atoms electrically neutral?'},
+   refs:['§1.1','Ch 4','Ch 8'],
+   note:'Stable as far as anyone has measured. Cosmic rays are mostly protons and heavier nuclei.'},
+  {id:'n', sym:'n', name:'neutron', cat:'hadron', sec:'baryons', mass:'939.6 MeV', q:'0', s:'1/2',
+   content:'udd', life:'879 s (free)', forces:['Strong','Weak'],
+   pred:{y:1920, by:'Ernest Rutherford'},
+   found:{y:1932, by:'James Chadwick', how:'Neutral radiation from beryllium knocked protons out of paraffin with momenta only a massive neutral particle could supply. Why is helium so heavy?'},
+   refs:['§1.1','Ch 4'],
+   note:'Heisenberg treated the proton and neutron as two states of a single nucleon, which is where isospin comes from.'},
+  {id:'delta', sym:'Δ', name:'delta', cat:'hadron', sec:'baryons', mass:'1.232 GeV', q:'++,+,0,-', s:'3/2, 5/2,...',
+   content:'uuu, uud, udd, ddd', life:'5.6 × 10⁻²⁴ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1952, by:'University of Chicago cyclotron', how:'A peak in pion-proton scattering cross sections.'},
+   refs:['§1.7','Ch 4','Ch 5'],
+   note:'Δ⁺⁺ = uuu with all three spins aligned looked like a violation of the Pauli principle, one of the clues that led to colour.'},
+  {id:'lambda', sym:'Λ<sup>0</sup>', name:'lambda', cat:'hadron', sec:'baryons', mass:'1.116 GeV', q:'0', s:'1/2',
+   content:'uds', life:'2.6 × 10⁻¹⁰ s', forces:['Strong','Weak'],
+   found:{y:1950, by:'Cosmic-ray observations', how:'Identified as a neutral V particle decaying to pπ⁻.'},
+   refs:['§1.6','Ch 4'],
+   note:'Lightest strange baryon. There is charmed, bottom and top lambda as well.'},
+  {id:'sigma', sym:'Σ', name:'sigma', cat:'hadron', sec:'baryons', mass:'1.19 GeV', q:'+1,0,-1', s:'1/2',
+   content:'uus, uds, dds', life:'Σ⁺ 8.0 × 10⁻¹¹ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1953, by:'Cosmic-ray emulsion experiments', how:'Heavy strange baryons decaying to a nucleon and a pion.'},
+   refs:['§1.7'],
+   note:'An isospin triplet of strange baryons. Σ⁰ decays electromagnetically to Λγ, so it lives far shorter than its charged partners.'},
+  {id:'xi', sym:'Ξ', name:'xi (cascade)', cat:'hadron', sec:'baryons', mass:'1.32 GeV', q:'0,-1', s:'1/2',
+   content:'uss, dss', life:'Ξ⁻ 1.6 × 10⁻¹⁰ s', forces:['Strong','Electromagnetic','Weak'],
+   found:{y:1952, by:'Cosmic-ray cloud chamber (Manchester)', how:'A decay chain Ξ → Λπ → pππ.'},
+   refs:['§1.7'],
+   note:'Called the cascade because it decays in steps down to a proton. Strangeness -2.'},
+  {id:'omega', sym:'Ω<sup>-</sup>', name:'omega minus', cat:'hadron', sec:'baryons', mass:'1.672 GeV', q:'-1', s:'3/2',
+   content:'sss', life:'8.2 × 10⁻¹¹ s', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1962, by:'Murray Gell-Mann'},
+   found:{y:1964, by:'Barnes et al., Brookhaven 80-inch bubble chamber', how:'A single K⁻p event showing the predicted decay chain.'},
+   refs:['§1.7','Ch 4'],
+   note:'The triumph of the Eightfold Way: Gell-Mann predicted its mass, charge and strangeness from the empty corner of the baryon decuplet.'},
+
+  // ---------- Antimatter ----------
+  {id:'epos', sym:'e<sup>+</sup>', name:'positron', cat:'lepton', anti:true, of:'e', sec:'anti', mass:'0.511 MeV', q:'+1', s:'1/2',
+   life:'Stable', forces:['Electromagnetic','Weak'],
+   pred:{y:1928, by:'Paul Dirac'},
+   found:{y:1932, by:'Carl Anderson', how:'A cosmic-ray cloud-chamber track curving like an electron but with opposite charge; a lead plate fixed its direction.'},
+   refs:['§1.4','Ch 5','Ch 7'],
+   note:'The first antiparticle. Positronium, the e⁺e⁻ bound state, is worked out in the chapter on bound states.'},
+  {id:'pbar', sym:B('p'), name:'antiproton', cat:'hadron', anti:true, of:'p', sec:'anti', mass:'938.3 MeV', q:'-1', s:'1/2',
+   content:B('u')+B('u')+B('d'), life:'Stable', forces:['Strong','Electromagnetic','Weak'],
+   pred:{y:1933, by:'Paul Dirac (by extension of the positron argument)'},
+   found:{y:1955, by:'Chamberlain, Segrè, Wiegand & Ypsilantis (Bevatron)', how:'The Bevatron energy was chosen to exceed the production threshold; antiprotons were identified by momentum and time of flight.'},
+   refs:['§1.4','Ch 3'],
+   note:'Confirmed that antiparticles are a general feature, not something peculiar to the electron.'},
+  {id:'nbar', sym:B('n'), name:'antineutron', cat:'hadron', anti:true, of:'n', sec:'anti', mass:'939.6 MeV', q:'0', s:'1/2',
+   content:B('u')+B('d')+B('d'), life:'879 s (free)', forces:['Strong','Weak'],
+   found:{y:1956, by:'Cork, Lambertson, Piccioni & Wenzel (Bevatron)', how:'Charge exchange p̄p → n̄n, identified by the annihilation that followed.'},
+   refs:['§1.4'],
+   note:'A neutral particle that is nonetheless distinct from its antiparticle: opposite baryon number and opposite magnetic moment.'},
+];
+
+const CAT_NAME = {quark:'Quark', lepton:'Lepton', gauge:'Gauge boson', scalar:'Scalar boson', hadron:'Hadron'};
+const SEC_NAME = {mesons:'Meson', baryons:'Baryon'};
+
+/* Antiparticles without their own discovery record above.
+   'self' = the particle is its own antiparticle. */
+const ANTI = {
+  u:[B('u'),'anti-up'], d:[B('d'),'anti-down'], s:[B('s'),'anti-strange'],
+  c:[B('c'),'anti-charm'], b:[B('b'),'anti-bottom'], t:[B('t'),'anti-top'],
+  mu:['μ<sup>+</sup>','antimuon'], tau:['τ<sup>+</sup>','antitau'],
+  ve:[B('ν')+'<sub>e</sub>','electron antineutrino','Whether neutrinos are their own antiparticles (Majorana) is still an open question; neutrinoless double-beta decay searches test it.'],
+  vmu:[B('ν')+'<sub>μ</sub>','muon antineutrino'], vtau:[B('ν')+'<sub>τ</sub>','tau antineutrino'],
+  g:['self',null,'The eight gluons form a self-conjugate set: the antiparticle of each colour state is another gluon.'],
+  gamma:['self'], Z:['self'], H:['self'],
+  W:['W<sup>∓</sup>','W⁺ and W⁻ are each other\'s antiparticles'],
+  pic:['π<sup>∓</sup>','π⁺ and π⁻ are each other\'s antiparticles'],
+  pi0:['self'], kc:['K<sup>∓</sup>','K⁺ and K⁻ are each other\'s antiparticles'],
+  k0:[B('K')+'<sup>0</sup>','anti-K⁰','Distinct from the K⁰ (opposite strangeness); the two mix through the weak interaction.'],
+  eta:['self'], jpsi:['self'], ups:['self'],
+  delta:[B('Δ'),'antidelta'], lambda:[B('Λ'),'antilambda'], sigma:[B('Σ'),'antisigma'],
+  xi:[B('Ξ'),'anti-xi'], omega:[B('Ω')+'<sup>+</sup>','anti-omega'],
+};
+/* Additive quantum numbers, for conservation laws later.
+   Only nonzero values need listing; anything missing is 0.
+   Conventions follow Griffiths: s has S = −1, b has B′ = −1, c has C = +1, t has T = +1.
+   For multiplets, several values are listed in the order of the members. */
+const QN = {
+  u:{B:'1/3', I:'1/2', I3:'+1/2'},   d:{B:'1/3', I:'1/2', I3:'−1/2'},
+  s:{B:'1/3', S:'−1', I:'0'},        c:{B:'1/3', C:'+1', I:'0'},
+  b:{B:'1/3', Bp:'−1', I:'0'},       t:{B:'1/3', T:'+1', I:'0'},
+  e:{Le:'+1'}, ve:{Le:'+1'}, mu:{Lmu:'+1'}, vmu:{Lmu:'+1'}, tau:{Ltau:'+1'}, vtau:{Ltau:'+1'},
+  g:{}, gamma:{}, Z:{}, W:{}, H:{},
+  pic:{I:'1', I3:'+1 (π⁺), −1 (π⁻)'},  pi0:{I:'1', I3:'0'},
+  kc:{S:'+1 (K⁺), −1 (K⁻)', I:'1/2', I3:'+1/2 (K⁺), −1/2 (K⁻)'},
+  k0:{S:'+1', I:'1/2', I3:'−1/2'},
+  eta:{I:'0'}, jpsi:{I:'0'}, ups:{I:'0'},
+  p:{B:'1', I:'1/2', I3:'+1/2'},      n:{B:'1', I:'1/2', I3:'−1/2'},
+  delta:{B:'1', I:'3/2', I3:'+3/2, +1/2, −1/2, −3/2'},
+  lambda:{B:'1', S:'−1', I:'0'},
+  sigma:{B:'1', S:'−1', I:'1', I3:'+1, 0, −1'},
+  xi:{B:'1', S:'−2', I:'1/2', I3:'+1/2, −1/2'},
+  omega:{B:'1', S:'−3', I:'0'},
+};
+/* Colour: quarks are colour triplets, gluons an octet, hadrons singlets; leptons and other bosons carry none. */
+const colourOf = p => p.cat === 'quark' ? 'Triplet (red, green, blue)'
+  : p.id === 'g' ? 'Octet (colour–anticolour)'
+  : p.cat === 'hadron' ? 'Singlet (colourless)' : 'None';
+const QN_ROWS = [
+  ['Baryon number', 'B', q => q.B],
+  ['Lepton numbers', 'L<sub>e</sub>, L<sub>μ</sub>, L<sub>τ</sub>', q => [q.Le, q.Lmu, q.Ltau].map(v => v || '0').join(', ')],
+  ['Strangeness', 'S', q => q.S],
+  ['Charm', 'C', q => q.C],
+  ['Bottomness', 'B′', q => q.Bp],
+  ['Topness', 'T', q => q.T],
+  ['Isospin', 'I, I<sub>3</sub>', q => q.I ? `${q.I}, ${q.I3 || '0'}` : '—'],
+];
+/* Which additive numbers flip for the antiparticle */
+function flipped(p){
+  const q = QN[p.id] || {}, out = [];
+  if (p.q !== '0') out.push('electric charge');
+  if (q.B) out.push('baryon number');
+  if (q.Le) out.push('lepton number L<sub>e</sub>');
+  if (q.Lmu) out.push('lepton number L<sub>μ</sub>');
+  if (q.Ltau) out.push('lepton number L<sub>τ</sub>');
+  if (q.S) out.push('strangeness');
+  if (q.C) out.push('charm');
+  if (q.Bp) out.push('bottomness');
+  if (q.T) out.push('topness');
+  if (q.I3 && q.I3 !== '0') out.push('isospin component I<sub>3</sub>');
+  if (p.cat === 'quark') out.push('colour (to anticolour)');
+  const list = out.length > 1 ? out.slice(0,-1).join(', ') + ' and ' + out.at(-1) : out[0];
+  return list ? `Same mass and spin; ${list} reversed` : 'Same mass and spin';
+}
+const isFermion = p => /\//.test(p.s) && p.s !== '0';
+
+/* Eras follow the sections of Griffiths Ch. 1 */
+const ERAS = [
+  {short:'Classical', name:'The Classical Era', ref:'§1.1', start:1897, end:1932,
+   desc:'Thomson identifies the electron, Rutherford finds the nucleus and the proton, and Chadwick\'s neutron completes an atom built from p, n and e.'},
+  {short:'Photon', name:'The Photon', ref:'§1.2', start:1900, end:1924,
+   desc:'Planck\'s quanta, Einstein\'s light quanta and finally Compton scattering convince physicists that light comes in particles.'},
+  {short:'Antiparticles', name:'Antiparticles', ref:'§1.4', start:1930, end:1956,
+   desc:'Dirac\'s equation implies a partner for every particle; the positron, antiproton and antineutron follow.'},
+  {short:'Neutrinos', name:'Neutrinos', ref:'§1.5', start:1930, end:1962,
+   desc:'Pauli proposes a neutral particle to rescue energy conservation in β decay. It is detected in 1956, and a second kind appears in 1962.'},
+  {short:'Mesons', name:'Mesons', ref:'§1.3', start:1934, end:1947,
+   desc:'Yukawa predicts a massive carrier of the nuclear force. The cosmic-ray muon is mistaken for it; the real pion turns up in 1947.'},
+  {short:'Strange', name:'Strange Particles', ref:'§1.6', start:1947, end:1960,
+   desc:'"V" particles are produced quickly but decay slowly. A new conserved quantity, strangeness, is invented and the particle zoo grows.'},
+  {short:'Eightfold Way', name:'The Eightfold Way', ref:'§1.7', start:1961, end:1964,
+   desc:'Gell-Mann and Ne\'eman arrange hadrons into SU(3) multiplets. A gap in the decuplet predicts the Ω⁻.'},
+  {short:'Quarks', name:'The Quark Model', ref:'§1.8', start:1964, end:1964,
+   desc:'Gell-Mann and Zweig explain the multiplets with three quarks. Deep inelastic scattering at SLAC reveals point-like constituents inside the proton.'},
+  {short:'November Revolution', name:'The November Revolution and Its Aftermath', ref:'§1.9', start:1974, end:1995,
+   desc:'The J/ψ establishes charm. The τ and the b follow within three years, and the top quark completes the third generation in 1995.'},
+  {short:'Standard Model', name:'The Standard Model', ref:'§1.11', start:1978, end:2012,
+   desc:'QCD and electroweak theory together become the working framework of particle physics.'},
+  {short:'W & Z', name:'Intermediate Vector Bosons', ref:'§1.10', start:1983, end:1983,
+   desc:'UA1 and UA2 at CERN find the W and Z at the masses electroweak theory predicted.'},
+  {short:'After the book', name:'After the book', ref:'beyond the 2nd edition', start:2008, end:2012,
+   desc:'The Higgs boson is discovered at the LHC (2012).'},
+];
+
+const MIN = 1895, MAX = 2012;
+let year = 1897, selected = null, timer = null;
+const prevStatus = {};
+
+const $ = s => document.querySelector(s);
+const byId = Object.fromEntries(PARTICLES.map(p => [p.id, p]));
+
+function status(p, y){
+  if (p.found && p.found.y <= y) return 'known';
+  if (p.pred && p.pred.y <= y) return 'predicted';
+  return 'future';
+}
+
+/* ---------- Build tiles ---------- */
+function tileHTML(p){
+  const pos = p.sec === 'sm' ? `style="grid-row:${p.r + 1};grid-column:${p.c}"` : '';
+  return `<button class="tile cat-${p.cat}" data-id="${p.id}" ${pos} aria-label="${p.full||p.name}">
+    <span class="t-m">${p.mass}</span><span class="t-q">${p.q}</span><span class="t-s">${p.s}</span>
+    <span class="t-yr"></span>
+    <span class="t-sym">${p.sym}</span>
+    <span class="t-name">${p.name}</span>
+    <span class="t-anti"></span>
+  </button>`;
+}
+const TILES = PARTICLES.filter(p => !p.anti);
+PARTICLES.filter(p => p.anti).forEach(a => { byId[a.of].antiRec = a; });
+for (const p of TILES){
+  const host = {sm:'#sm', mesons:'#mesons', baryons:'#baryons'}[p.sec];
+  $(host).insertAdjacentHTML('beforeend', tileHTML(p));
+}
+document.querySelectorAll('.tile').forEach(t => {
+  t.addEventListener('click', () => select(t.dataset.id));
+  t.addEventListener('animationend', () => t.classList.remove('flash'));
+});
+
+/* ---------- Timeline ---------- */
+const pct = y => ((y - MIN) / (MAX - MIN)) * 100;
+
+// Eras: each band keeps its true width; if its name doesn't fit inside,
+// the name sits just to the right. Lanes are packed by pixel extent so nothing overlaps.
+const lanesEl = $('#lanes');
+lanesEl.style.margin = '0 8px';
+ERAS.forEach(e => {
+  const b = document.createElement('button');
+  b.className = 'era';
+  b.innerHTML = `<span class="band"></span><span class="lbl">${e.short}</span>`;
+  b.title = `${e.name} (${e.start}${e.end!==e.start?'–'+e.end:''}), Griffiths ${e.ref}`;
+  b.setAttribute('aria-label', b.title);
+  b.addEventListener('click', () => { stop(); setYear(e.start); });
+  e.el = b;
+  lanesEl.appendChild(b);
+});
+function layoutEras(){
+  const W = lanesEl.clientWidth; if (!W) return;
+  const GAP = 4, LANE = 18;
+  const laneEnds = [];
+  ERAS.slice().sort((a,b) => a.start - b.start || b.end - a.end).forEach(e => {
+    const x = (e.start - MIN) / (MAX - MIN) * W;
+    const bw = Math.max(6, (Math.max(e.end, e.start + 1) - e.start) / (MAX - MIN) * W - 2);
+    const lbl = e.el.querySelector('.lbl');
+    const lw = lbl.offsetWidth ? lbl.scrollWidth : 0;
+    const inside = lw === 0 || lw <= bw;
+    const extent = inside ? bw : bw + 4 + lw;
+    const flip = !inside && x + extent > W;          // near the right edge: name goes on the left
+    const x0 = flip ? x + bw - extent : x;
+    let lane = laneEnds.findIndex(end => x0 >= end + GAP);
+    if (lane === -1){ lane = laneEnds.length; laneEnds.push(-Infinity); }
+    laneEnds[lane] = x0 + extent;
+    e.el.classList.toggle('outside', !inside);
+    const band = e.el.querySelector('.band');
+    band.style.width = bw + 'px';
+    band.style.left = flip ? (lw + 4) + 'px' : '0';
+    lbl.style.marginLeft = inside || flip ? '0' : (bw + 4) + 'px';
+    e.el.style.left = x0 + 'px';
+    e.el.style.width = extent + 'px';
+    e.el.style.top = (lane * LANE) + 'px';
+  });
+  lanesEl.style.height = (laneEnds.length * LANE) + 'px';
+}
+new ResizeObserver(layoutEras).observe(lanesEl);
+if (document.fonts) document.fonts.ready.then(layoutEras);
+
+const ticksEl = $('#ticks');
+PARTICLES.forEach(p => {
+  const t = document.createElement('span');
+  t.className = `tick cat-${p.cat}`;
+  t.style.left = pct(p.found.y) + '%';
+  t.title = `${p.full||p.name}, ${p.found.y}`;
+  p.tick = t;
+  ticksEl.appendChild(t);
+});
+
+const slider = $('#slider');
+slider.addEventListener('input', () => { stop(); setYear(+slider.value); });
+
+const PLAY = '<svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>';
+const PAUSE = '<svg viewBox="0 0 16 16"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>';
+const playBtn = $('#play');
+playBtn.innerHTML = PLAY;
+playBtn.addEventListener('click', () => timer ? stop() : play());
+function play(){
+  if (year >= MAX) setYear(MIN);
+  playBtn.innerHTML = PAUSE; playBtn.setAttribute('aria-label','Pause timeline');
+  timer = setInterval(() => { if (year >= MAX) stop(); else setYear(year + 1); }, 170);
+}
+function stop(){
+  clearInterval(timer); timer = null;
+  playBtn.innerHTML = PLAY; playBtn.setAttribute('aria-label','Play timeline');
+}
+
+function setYear(y){
+  year = y;
+  slider.value = y;
+  $('#year').textContent = y;
+
+  let known = 0, predicted = 0;
+  PARTICLES.filter(p => p.anti).forEach(a => a.tick.classList.toggle('on', status(a, y) === 'known'));
+  for (const p of TILES){
+    const st = status(p, y);
+    const el = document.querySelector(`.tile[data-id="${p.id}"]`);
+    el.classList.toggle('is-known', st === 'known');
+    el.classList.toggle('is-predicted', st === 'predicted');
+    el.classList.toggle('is-future', st === 'future');
+    el.querySelector('.t-yr').textContent = st === 'known' ? p.found.y : st === 'predicted' ? `(${p.pred.y})` : '';
+    if (prevStatus[p.id] && prevStatus[p.id] !== 'known' && st === 'known') el.classList.add('flash');
+    prevStatus[p.id] = st;
+    p.tick.classList.toggle('on', st === 'known');
+    const ear = el.querySelector('.t-anti');
+    const ast = p.antiRec ? status(p.antiRec, y) : 'none';
+    ear.className = 't-anti ' + ast;
+    ear.title = p.antiRec ? `${p.antiRec.name}: ${ast === 'known' ? 'observed ' + p.antiRec.found.y : ast === 'predicted' ? 'predicted ' + p.antiRec.pred.y : ''}` : '';
+    if (st === 'known') known++; else if (st === 'predicted') predicted++;
+  }
+  $('#count').textContent = `${known} of ${TILES.length} observed` + (predicted ? `, ${predicted} predicted` : '');
+
+  const active = ERAS.filter(e => e.start <= y && y <= e.end);
+  ERAS.forEach(e => e.el.classList.toggle('active', active.includes(e)));
+  let lead = active.slice().sort((a,b) => b.start - a.start)[0];
+  if (!lead){
+    lead = ERAS.filter(e => e.start <= y).sort((a,b) => b.end - a.end)[0];
+  }
+  if (!lead){
+    $('#era-names').innerHTML = 'Before the electron';
+    $('#era-desc').textContent = 'Atoms are still thought to be indivisible. Press play, or drag the slider to 1897.';
+  } else {
+    const names = (active.length ? active : [lead]).map(e => e.name).join(', ');
+    $('#era-names').innerHTML = `${names}<span class="ref">Griffiths ${ (active.length?active:[lead]).map(e=>e.ref).join(', ') }</span>`;
+    $('#era-desc').textContent = active.length ? lead.desc : `Following on from: ${lead.desc}`;
+  }
+  if (selected) renderPanel(byId[selected]);
+}
+
+/* ---------- Detail panel ---------- */
+const panel = $('#panel');
+$('#close').addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+function closePanel(){
+  panel.classList.remove('open');
+  document.querySelectorAll('.tile.selected').forEach(t => t.classList.remove('selected'));
+  selected = null;
+  $('#panel-body').innerHTML = '<p class="p-empty">Select a particle to see its properties, how it was found, and where it appears in Griffiths.</p>';
+}
+
+function select(id){
+  selected = id;
+  document.querySelectorAll('.tile').forEach(t => t.classList.toggle('selected', t.dataset.id === id));
+  renderPanel(byId[id]);
+  panel.classList.add('open');
+}
+
+function renderPanel(p){
+  const st = status(p, year);
+  const kind = (SEC_NAME[p.sec] || CAT_NAME[p.cat]) + (isFermion(p) ? ', fermion' : ', boson');
+  const antiHTML = renderAnti(p);
+  let statusText;
+  if (st === 'known') statusText = `Observed in ${p.found.y}. In ${year} it has been known for ${year - p.found.y} year${year - p.found.y === 1 ? '' : 's'}.`;
+  else if (st === 'predicted') statusText = `Predicted in ${p.pred.y} but not yet observed in ${year}. Observation comes in ${p.found.y}.`;
+  else statusText = `Unknown in ${year}. ${p.pred ? `First predicted in ${p.pred.y}; ` : ''}observed in ${p.found.y}.`;
+
+  const rows = [
+    ['Mass', p.mass], ['Charge', p.q + (p.q === '0' ? '' : ' e')], ['Spin', p.s],
+    p.content ? ['Quarks', p.content] : null,
+    ['Lifetime', p.life],
+  ].filter(Boolean).map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+
+  const body = $('#panel-body');
+  body.className = `cat-${p.cat}`;
+  body.innerHTML = `
+    <div class="p-head">
+      <div class="p-sym">${p.sym}</div>
+      <div><h3 class="p-name">${p.full ? p.full[0].toUpperCase()+p.full.slice(1) : p.name[0].toUpperCase()+p.name.slice(1)}</h3>
+      <div class="p-cat">${kind}</div></div>
+    </div>
+    <div class="p-status ${st}">${statusText}</div>
+    <dl>${rows}</dl>
+    <div class="p-sec"><h3>Quantum numbers</h3>${qnTable(p)}</div>
+    <div class="p-sec"><h3>Interactions</h3><div class="chips">${p.forces.map(f=>`<span class="chip">${f}</span>`).join('')}</div></div>
+    <div class="p-sec"><h3>Discovery, ${p.found.y}</h3><p>${p.found.by}. ${p.found.how}</p></div>
+    ${p.pred ? `<div class="p-sec"><h3>Prediction, ${p.pred.y}</h3><p>${p.pred.by}.</p></div>` : ''}
+    <div class="p-sec"><h3>Notes</h3><p>${p.note}</p></div>
+    <div class="p-sec"><h3>In Griffiths</h3><div class="chips">${p.refs.map(r=>`<span class="chip">${r}</span>`).join('')}</div></div>
+    ${antiHTML}`;
+}
+
+function qnTable(p){
+  const q = QN[p.id] || {};
+  const cell = v => (v === undefined || v === '0' || v === '0, 0, 0') ? `<td class="zero">${v || '0'}</td>` : `<td>${v}</td>`;
+  const body = [['Charge', 'Q', p.q], ...QN_ROWS.map(([l, sym, f]) => [l, sym, f(q)])]
+    .map(([l, sym, v]) => `<tr><th>${l}</th><td class="sym">${sym}</td>${cell(v)}</tr>`).join('')
+    + `<tr><th>Colour</th><td class="sym"></td><td${colourOf(p)==='None'?' class="zero"':''}>${colourOf(p)}</td></tr>`;
+  return `<table class="qn">${body}</table>`;
+}
+
+function renderAnti(p){
+  const a = p.antiRec;
+  if (a){
+    const st = status(a, year);
+    const when = st === 'known' ? `Observed in ${a.found.y}` : st === 'predicted' ? `Predicted in ${a.pred.y}, not yet observed in ${year}` : `Unknown in ${year}`;
+    return `<div class="p-sec"><h3>Antiparticle</h3>
+      <div class="p-anti"><span class="as">${a.sym}</span><div><strong>${a.name[0].toUpperCase()+a.name.slice(1)}</strong><div class="st">${flipped(p)}. ${when}.</div></div></div>
+      ${a.pred ? `<p><em>Predicted ${a.pred.y}:</em> ${a.pred.by}.</p>` : ''}
+      <p><em>Observed ${a.found.y}:</em> ${a.found.by}. ${a.found.how}</p>
+      <p>${a.note}</p>
+      <div class="chips" style="margin-top:6px">${a.refs.map(r=>`<span class="chip">${r}</span>`).join('')}</div></div>`;
+  }
+  const info = ANTI[p.id];
+  if (!info) return '';
+  if (info[0] === 'self') return `<div class="p-sec"><h3>Antiparticle</h3><p>${info[2] || 'Its own antiparticle.'}</p></div>`;
+  return `<div class="p-sec"><h3>Antiparticle</h3>
+    <div class="p-anti"><span class="as">${info[0]}</span><div>${info[1][0].toUpperCase()+info[1].slice(1)}<div class="st">${flipped(p)}</div></div></div>
+    ${info[2] ? `<p>${info[2]}</p>` : ''}</div>`;
+}
+
+/* keep page padding in sync with the timeline height */
+const bar = $('#timebar');
+const syncBar = () => document.documentElement.style.setProperty('--bar-h', bar.offsetHeight + 'px');
+new ResizeObserver(syncBar).observe(bar);
+syncBar();
+
+/* Hide timeline: shows the full present-day table; showing it again restores the year */
+let savedYear = null;
+function setTimelineHidden(h){
+  stop();
+  bar.hidden = h; $('#show-tl').hidden = !h;
+  if (h){ if (savedYear === null) savedYear = year; setYear(MAX); }
+  else if (savedYear !== null){ setYear(savedYear); savedYear = null; }
+  syncBar();
+  try { localStorage.setItem('particle-notebook:timeline-hidden', h ? '1' : '0'); } catch(e){}
+}
+$('#hide-tl').addEventListener('click', () => setTimelineHidden(true));
+$('#show-tl').addEventListener('click', () => setTimelineHidden(false));
+
+setYear(year);
+try { if (localStorage.getItem('particle-notebook:timeline-hidden') === '1') setTimelineHidden(true); } catch(e){}
+</script>
+</body>
+</html>
